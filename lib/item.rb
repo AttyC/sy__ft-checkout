@@ -1,7 +1,7 @@
 class Item
-  def initialize(name, id_number, price)
-    @name
+  def initialize(id_number, name, price)
     @id_number
+    @name
     @price
   end
 end
