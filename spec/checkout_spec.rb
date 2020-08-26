@@ -23,4 +23,11 @@ describe Checkout do
     expect(subject.total(subject.items)).to eq 39.90
   end
 
+
+  it 'discounted_items count increases when items with discoun are scanned' do
+    subject.scan(item_1)
+    subject.scan(item_1)
+    expect(subject.discounted_items).to eq 2
+  end
+
 end
