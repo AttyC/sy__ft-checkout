@@ -20,14 +20,33 @@ describe Checkout do
   it 'total method returns sum of scanned item prices' do
     subject.scan(item_3)
     subject.scan(item_3)
-    expect(subject.total(subject.items)).to eq 39.90
+    expect(subject.total).to eq 39.90
   end
 
-
-  it 'discounted_items count increases when items with discoun are scanned' do
+  it 'discounted_items count increases when items with discount are scanned' do
     subject.scan(item_1)
     subject.scan(item_1)
     expect(subject.discounted_items).to eq 2
+  end
+
+  it 'apply_discount method applies discount to discounted items when totalling' do
+    subject.scan(item_1)
+    subject.scan(item_1)
+    expect(subject.total).to eq 17.00
+  end
+
+  it 'applies 10% off your purchase if subtotal is over £60.00' do
+    subject.scan(item_1)
+    subject.scan(item_2)
+    subject.scan(item_3)
+    expect(subject.total).to eq 66.78
+  end
+
+  it 'applies 10% off your purchase plus discount for discounted items if subtotal is over £60.00 and 2 or more discounted items are ordered' do
+    subject.scan(item_1)
+    subject.scan(item_1)
+    subject.scan(item_2)
+    expect(subject.total).to eq 55.80
   end
 
 end
