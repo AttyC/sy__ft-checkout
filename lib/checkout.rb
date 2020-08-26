@@ -13,7 +13,10 @@ class Checkout
   end
 
   def scan(item)
-    # @subtotal = 1
-    @items << item
+    @items << item.price
+  end
+
+  def total(items)
+    items.reduce(:+)
   end
 end
