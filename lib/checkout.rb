@@ -36,7 +36,7 @@ class Checkout
   end
 
   def ten_percent(subtotal)
-    @subtotal = @subtotal - @subtotal * 0.1
+    @subtotal = (@subtotal - @subtotal * 0.1).round(2)
   end
 
 end
